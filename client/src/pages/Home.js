@@ -32,7 +32,7 @@ function Home() {
     <Layout>
       <Row gutter={20}>
         {tattooist.map((tattooist) => (
-          <Col span={8} xs={24} sm={24} lg={8}>
+          <Col span={8} xs={24} sm={24} lg={8} key={tattooist}>
             <Tattooist tattooist={tattooist} />
           </Col>
         ))}

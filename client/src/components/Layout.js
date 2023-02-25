@@ -73,7 +73,7 @@ function Layout({ children }) {
     // },
   ];
 
-  const menuToBeRendered = user?.isAdmin
+  const menus = user?.isAdmin
     ? adminMenu
     : user?.isTattooist
     ? tattooistMenu
@@ -97,14 +97,15 @@ function Layout({ children }) {
             <h1 className="role">{role}</h1>
           </div>
 
-          <div className="menu">
-            {menuToBeRendered.map((menu) => {
+          <div className="menu" >
+            {menus.map((menu) => {
               const isActive = location.pathname === menu.path;
               return (
                 <div
                   className={`d-flex menu-item ${
                     isActive && "active-menu-item"
                   }`}
+                  
                 >
                   <i className={menu.icon}></i>
                   {!collapsed && <Link to={menu.path}>{menu.name}</Link>}
@@ -117,6 +118,7 @@ function Layout({ children }) {
                 localStorage.clear();
                 navigate("/login");
               }}
+              
             >
               <i className="ri-logout-circle-fill"></i>
               {!collapsed && <Link to="/login">Logout</Link>}
